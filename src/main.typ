@@ -4,16 +4,18 @@
 
 #set text(font: "Noto Serif CJK SC", lang: "zh", region: "CN")
 #show math.equation: set text(font: ("New Computer Modern Math", "Noto Serif CJK SC"))
+#show math.equation: set block(breakable: true)
 #set par(leading: 0.8em, justify: true)
-#show heading.where(level: 1): it => {
-  block(
+#show heading.where(level: 1): it => [
+  #pagebreak(weak: true)
+  #block(
     align(center, it),
     width: 100%,
     fill: gradient.linear(white, blue.lighten(70%), white),
     above: 2em,
     below: 1em
   )
-}
+]
 #show heading.where(level: 2): it => {
   block(
     it,
@@ -45,5 +47,3 @@
 #include "chapters/04 线性微分方程组.typ"
 
 #include "chapters/05 高阶线性微分方程.typ"
-
-#include "chapters/06 微分方程的基本定理.typ"

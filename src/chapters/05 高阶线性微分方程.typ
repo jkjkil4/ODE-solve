@@ -31,7 +31,7 @@
   #let elem(a, b) = $C'_1(x) #a _1(x) + dots.c + C'_n (x) #a _n (x) = #b$
   #set math.cases(gap: 0.7em)
 
-  并求解方程组
+  并求解方程组#text(luma(50%))[（该方程组由 $Phi(x) C'(x) = bold(f)(x)$ 得）]
   $
     cases(
       elem(phi.alt, 0),
@@ -41,7 +41,7 @@
       elem(phi.alt^((n-1)), f(x)),
     ) 
   $
-  #text(gray)[（注意观察，这里每往下一行，$phi.alt$ 就多导一次，并且只有最后一行是 $=f(x)$）]
+  #text(luma(50%))[（注意观察，这里每往下一行，$phi.alt$ 就多导一次，并且只有最后一行是 $=f(x)$）]
 
   解得 $C'_1(x), dots.c, C'_n (x)$ 的表达式，再求积分即得 $C_1(x), dots.c, C_n (x)$，\
   代回 $y = C_1(x) phi.alt_1(x) + C_2(x) phi.alt_2(x) + dots.c + C_n (x) phi.alt_n (x)$ 就得到了原方程的*通解*
@@ -101,7 +101,7 @@
   $
 ]
 
-#thm-tip[
+#thm-warn[
   我们指出：对常系数非齐次线性微分方程，用常数变易法总能将通解表达出来，这是具有一般性的方法. 但在用常数变易法求特解的过程中，还需要计算积分.
   
   有时积分并不容易表达出来，因此对具有某些特殊形式的 $f(x)$ 的微分方程，还可以用其它的方法求其特解，在后续的几节展开介绍.
@@ -190,10 +190,10 @@ $ <eq-高阶微分方程>]
   其中 $A_m_1 (x)$ 和 $B_m_2 (x)$ 分别是 $x$ 的 $m_1$ 次和 $m_2$ 次多项式，那么 @eq-高阶微分方程 有如下形式的特解：
   $
     phi.alt^* (x) = cases(
-      &[C_n (x) cos(beta x) + D_n sin(beta x)] e^(alpha x)
+      &[C_n (x) cos(beta x) + D_n (x) sin(beta x)] e^(alpha x)
       \, quad #[当 $space alpha + upright(i) beta$ 不是特征根时],
 
-      x^k&[C_n (x) cos(beta x) + D_n sin(beta x)] e^(alpha x)
+      x^k&[C_n (x) cos(beta x) + D_n (x) sin(beta x)] e^(alpha x)
       \, quad #[当 $space alpha + upright(i) beta space$ 是 $space k$ 重特征根时]
     )
   $
@@ -208,7 +208,7 @@ $ <eq-高阶微分方程>]
 
   其实你可以思考一下，这个结构和使用 Euler 公式展开复数幂次
   $
-    e^((alpha + upright(i) beta) x) = [cos(beta x) + sin(beta x)]e^(alpha x)
+    e^((alpha + upright(i) beta) x) = [cos(beta x) + upright(i) sin(beta x)]e^(alpha x)
   $
 
   有异曲同工之处.
@@ -285,7 +285,7 @@ $ <eq-高阶微分方程>]
   的特解，可以计算
   $
     (y^*)' &= &-A omega sin omega x &+& B omega cos omega x \
-    (y^*)'' &= &-A omega^2 cos omega x &-& B omega^w sin omega x
+    (y^*)'' &= &-A omega^2 cos omega x &-& B omega^2 sin omega x
   $
 
   代入原方程得
@@ -434,7 +434,7 @@ $ <eq-高阶微分方程>]
     psi(x) = x/4 sin x
   $
 
-  所以原方程的*通解*为（省略了求解基本解组的过程）
+  所以原方程的*通解*为（这里省略求解基本解组的过程）
   #pinit-highlight(7, 8, fill: pinit-c1)
   #pinit-highlight(9, 10, fill: pinit-c2)
   $
@@ -594,7 +594,7 @@ $ <eq-高阶微分方程>]
   $
 ]
 
-#thm-tip[
+#thm-warn[
   对更一般的方程
 
   #let axb = $a x + b$
@@ -655,7 +655,7 @@ $
 #thm-method[
   *常点情形（幂级数解法）*
 
-  若 $x_0$ 是常点，则 @eq-幂级数 可写成
+  若 $x_0$ 是常点（$A(x_0)!=0$），则 @eq-幂级数 可写成
   #eqnum-on[$
     y'' + p(x) y' + q(x) y = 0
   $ <eq-幂级数-常点>]
@@ -665,7 +665,7 @@ $
     p(x) = B(x) \/ A(x), wide q(x) = C(x) \/ A(x)
   $
 
-  在 $x_0$ 附近是解析的. 此时，@eq-幂级数-常点 在区间 $abs(x-x_0)<r$ 内有收敛的幂级数解
+  在 $x_0$ 附近是解析的. 此时，@eq-幂级数-常点 在区间 $abs(x-x_0)<r$ 内有收敛的*幂级数解*
   $
     y = sum_(n=0)^oo C_n (x-x_0)^n
   $
@@ -688,7 +688,7 @@ $
   #show math.equation: math.display
   方程可改写成
   $
-    y'' - 2x/(1-x^2) y' + (n(n-1))/(1-x^2) y = 0
+    y'' - 2x/(1-x^2) y' + (n(n+1))/(1-x^2) y = 0
   $
 
   #let sumoo = $sum_(k=0)^oo C_k x^k$
@@ -781,7 +781,6 @@ $
   #v(21em)
   
   整理得
-  #v(-1em)
   $
     sum_(k=0)^oo 
     lr([
@@ -797,7 +796,6 @@ $
   $
 
   即
-  #v(-1em)
   $
     sum_(k=0)^oo
     lr([
@@ -949,14 +947,308 @@ $
     y = C_0 y_1 (x) + C_1 y_2 (x), quad -1 < x < 1
   $
 ]
-#thm-tip[
+#thm-warn[
   还有关于 *Legendre 多项式*、*Rodrigues 公式* 等内容，请参阅原教材
 ]
 
 #thm-method[
   *奇点情形（广义幂级数解法）*
 
-  若 $x_0$ 是奇点
+  若 $x_0$ 是奇点（$A(x_0)=0$），$A(x) y'' + B(x) y' + C(x) y = 0$ 一般不再具有幂级数形式的通解，而且在奇点 $x_0$ 的初值问题可能是无解的，但我们可以考虑这样的形式：
+  #eqnum-on[$
+    (x-x_0)^2 y'' + (x-x_0) P(x) y' + Q(x) y = 0
+  $ <eq-幂级数-奇点>]
+
+  其中 $P(x)$，$Q(x)$ 在 $x_0$ 点附近可展成 $(x-x_0)$ 的幂级数\
+  #text(luma(40%), size: 0.8em)[（即在常点情形的 @eq-幂级数-常点 中，$(x-x_0) p(x)$ 和 $(x-x_0)^2 q(x)$ 可展成 $(x-x_0)$ 的幂级数）]
+
+  则方程 @eq-幂级数-奇点 有收敛的*广义幂级数解*
+  $
+    y = sum_(k=0)^oo C_k (x-x_0)^(k+rho) quad (C_0 != 0)
+  $
+
+  其中*指标* $rho$ 和系数 $C_k space (k >= 1)$ 可以用代入法确定\
+  #text(luma(40%), size: 0.8em)[（可以发现，相比常点情形中需要用代入法确定 $C_k$，在奇点情形中多了一个需要确定的 $rho$）]
 ]
 
+#thm-example[
+  求解 *Bessel 方程*（贝塞尔，1784-1846，德国天文学家）
+  #eqnum-on[$
+    x^2 y'' + x y' + (x^2 - n^2) y = 0
+  $ <eq-Bessel方程>]
+
+  其中常数 $n>=0$
+]
+#thm-solve[
+  与 @eq-幂级数-奇点 比较，$x_0 = 0$；$P(x) = 1$ 与 $Q(x)=x^2-n^2$ 可在区间 $-oo < x < oo$ 上展成 $x$ 的幂级数. 由方法可知该方程 @eq-Bessel方程 有广义幂级数解
+
+  #let sumoo = $sum_(k=0)^oo C_k x^(k+rho)$
+  $ y = sumoo quad (C_0 != 0) $
+
+  // #v(100em)
+  其中系数 $C_k space (k>=1)$ 和指标 $rho$ 待定. 将该待定解代入原方程 @eq-Bessel方程 得
+
+  
+
+  #let arrow = align(center,
+    {
+      v(-0.7em)
+      cetz.canvas({
+        import cetz.draw: line
+    
+        line((0,0), (0,-0.4), mark: (end: "stealth"), fill: blue, stroke: blue)
+      })
+      v(-0.7em)
+    }
+  )
+
+  #let tgray(body) = {
+    set text(luma(50%))
+    body
+  }
+
+  #let body = [
+    $ sum_(k=0)^oo (k+rho) (k+rho-1) C_k x^(k+rho) $
+  ]
+  #context pinit-point-to(
+    (1,2),
+    pin-dx: -20pt,
+    pin-dy: 18pt,
+    offset-dx: -20pt,
+    offset-dy: 40pt,
+    body-dx: -measure(body).width / 2,
+    body-dy: 8pt,
+    fill: blue,
+    body
+  )
+  
+  #let body = [
+    $ sum_(k=0)^oo (k+rho) C_k x^(k+rho) $
+  ]
+  #context pinit-point-to(
+    (3,4),
+    pin-dx: 6pt,
+    pin-dy: 18pt,
+    offset-dx: 6pt,
+    offset-dy: 40pt,
+    body-dx: -measure(body).width / 2,
+    body-dy: 8pt,
+    fill: blue,
+    body
+  )
+
+  #let body = [
+    $ tgray(-n^2 sumoo) + sum_(k=0)^oo C_k x^(k+rho+2) $
+
+    #arrow
+
+    $ tgray(-n^2 sumoo) + sum_(k=2)^oo C_(k-2) x^(k+rho) $
+
+    #align(center,
+      {
+        v(-0.7em)
+        cetz.canvas({
+          import cetz.draw: line, content
+      
+          line((0,0), (0,-2), mark: (end: "stealth"), fill: blue, stroke: blue, name: "arrow-line")
+          content(("arrow-line.start", 50%, "arrow-line.end"),)[
+            #set text(size: 0.8em)
+            #box(fill: white, outset: 1pt)[
+              #set align(center)
+              约定 $C_(-1) = C_(-2) = 0$\
+              于是可把求和从 $k=2$ 换成 $k=0$
+            ]
+          ]
+        })
+        v(-0.7em)
+      }
+    )
+
+    $ tgray(-n^2 sumoo) + sum_(k=0)^oo C_(k-2) x^(k+rho) $
+  ]
+  #context pinit-point-to(
+    (5,6),
+    pin-dx: 30pt,
+    pin-dy: 18pt,
+    offset-dx: 30pt,
+    offset-dy: 40pt,
+    body-dx: -measure(body).width / 2,
+    body-dy: 8pt,
+    fill: blue,
+    body
+  )
+
+  #let cunderline(body) = {
+    set text(blue)
+    math.underline({
+      set text(black)
+      body
+    })
+  }
+
+  $
+    cunderline(#pin(1) x^2 (sumoo)'' #pin(2)) + cunderline(#pin(3) x (sumoo)' #pin(4)) + cunderline(#pin(5) (x^2-n^2) sumoo #pin(6)) = 0
+  $
+
+  #v(21em)
+  
+  整理得
+  $
+    sum_(k=0)^oo 
+    lr([
+      (k+rho)(k+rho-1) C_k
+      +
+      (k+rho) C_k
+      -
+      n^2 C_k
+      +
+      C_(k-2)
+    ], size: #120%)
+    x^(k+rho) = 0
+  $
+
+  它可改写成
+  $
+    sum_(k=0)^oo
+    lr([
+      (rho+n+k)(rho-n+k) C_k + C_(k-2)
+    ], size: #120%)
+    x^(k+rho) = 0
+  $
+
+  由此得递推公式
+  $
+    (rho+n+k)(rho-n+k) C_k + C_(k-2) = 0, quad k=0,1,2,dots.c
+  $
+
+  可令 $k=0$ 推得*指标方程*
+  $
+    (rho+n)(rho-n) = 0
+  $
+
+  由此得到两个*指标根*：$rho_1 = n$ 和 $rho_2 = -n$
+
+  #set enum(numbering: "(1).")
+
+  + 当 $rho = rho_1 = n$ 时，递推公式成为
+    #eqnum-on[$
+    (2n+k)k C_k + C_(k-2) = 0, quad (k=1,2,dots.c)
+    $ <eq-幂级数-奇点-n1-递推公式>]
+
+    由此可依次确定 $C_k$，具体来说，对于下标 $k$ 为奇数的情况：
+    $
+      (2n+1) C_1 + C_(-1) = 0
+    $
+    因此可得 $C_1 = 0$，进一步可以得到 $C_3 = C_5 = dots.c = C_(2k+1) = dots.c = 0$
+
+    #v(0.5em)
+
+    对于下标 $k$ 为偶数的情况，考虑 @eq-幂级数-奇点-n1-递推公式 递推公式的变形
+    $
+      C_k = (-1) / (2^2(n+k/2)k/2) C_(k-2)
+    $
+
+    得到
+    $
+      C_2 &= (-1) / (2^2(n+1)) C_0 \
+      C_4 &= (-1)^2 / (2^4(n+1)(n+2)2!) C_0 \
+
+      #v(1em)
+      dots.c dots.c & dots.c dots.c dots.c dots.c \
+
+      C_(2m) &= (-1)^m / (
+        2^(2m) lr([
+          (n+1)(n+2) dots.c (n+m)
+        ], size: #150%) m!
+      ) C_0
+    $
+
+    我们可以想办法用阶乘的“形式”简化以上表达式，但由于这里 $n$ 可取任意非负数，不一定是整数，因此我们这里引入 $Gamma$ 函数的记号
+    $
+      Gamma(p) = integral_0^oo t^(p-1) e^(-t) dif t quad (p>0)
+    $
+    
+    可以认为它是阶乘在非整数的推广，具有性质
+    #eqbr-off[$
+      & Gamma(p+1) = p Gamma(p) \
+      & Gamma(n+k+1) = lr([
+        (n+k) dots.c (n+2)(n+1)
+      ], size: #150%) dot Gamma(n+1) \
+      & Gamma(k+1) = k!
+    $]
+
+    并取
+    $
+      C_0 = 1 / (#pin(1)2^n#pin(2)Gamma(n+1))
+    $
+
+    #pinit-highlight-equation-from(
+      (1, 2), (1, 2), 
+      height: 3em, 
+      pos: bottom, 
+      fill: rgb(0, 180, 255),
+    )[
+      #set text(size: 0.8em)
+      编者注：我并未理解为什么要有这一项\
+      也许只是为了到后面能和 $x^(2k+n)$ 整在一起 
+    ]
+
+    #v(3em)
+    于是可把上面 $C_(2k)$ 的表达式改写成
+    $
+      C_(2k) &= (-1)^k / (
+        
+        lr([
+          (n+1)(n+2) dots.c (n+k)
+          dot Gamma(n+1)
+        ], size: #150%) 
+        k!
+        dot
+        2^(2k) dot 2^n
+      ) \
+
+      &= (-1)^k / (
+        Gamma(n+k+1) Gamma(k+1)
+      )
+      dot
+      1 / (2^(2k+n))
+    $
+
+    于是，对应于指标根 $rho_1 = n$，我们得到 Bessel 方程的一个广义幂级数解
+    $
+      y 
+      = 
+      J_n (x) 
+      = 
+      sum_(k=0)^oo 
+      (-1)^k / (
+        Gamma(n+k+1) Gamma(k+1)
+      )
+      (x/2)^(2k+n)
+    $
+
+    它在 $-oo < x < oo$ 上收敛，称为*第一类 Bessel 函数*
+
+  + 当 $rho = rho_2 = -n space (n>0)$ 时
+  
+    累了，这里分类讨论太多了，自己看书吧
+
+  // + 当 $rho = rho_2 = -n space (n>0)$ 时，递推公式 $(rho+n+k)(rho-n+k) C_k + C_(k-2) = 0$ 成为
+  //   $
+  //     k(k-2n) C_k + C_(k-2) = 0
+  //   $
+
+  //   + 当 $2n$ 不等于任何整数
+
+  //     + 当 $2n$ 的小数部分为 $0.5$ 时
+
+  //   + 当 $2n$ 等于某个整数 $N$ 
+]
+
+== \*变换法
+
+[TODO]
+
 == \*边值问题
+
+[TODO]

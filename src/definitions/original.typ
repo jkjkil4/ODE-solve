@@ -16,3 +16,11 @@
   set math.equation(numbering: none)
   body
 }
+#let eqbr-on(body) = {
+  show math.equation: set block(breakable: true)
+  body
+}
+#let eqbr-off(body) = {
+  show math.equation: set block(breakable: false)
+  body
+}
