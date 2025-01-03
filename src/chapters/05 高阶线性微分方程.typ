@@ -4,7 +4,131 @@
 
 == 一般理论
 
+[TODO]
+
 == 常系数高阶线性微分方程
+
+#thm-definition[
+  *常系数高阶齐次线性微分方程*
+  #eqnum-on[$ y^((n)) + a_1 y^((n-1)) + dots.c + a_(n-1) y' + a_n y = 0 $ <eq-常系数高阶齐次线性微分方程>]
+
+  以及其特征方程
+  $ lambda^n + a_1 lambda^(n-1) + dots.c + a_(n-1) lambda + a_n = 0 $
+]
+#thm-explain[
+  由于求解高阶线性微分方程的基解涉及求解特征方程的根，而特征根可能出现重根或复数根，所以我们一步步来，在后续的方法介绍中，我会先从最简单的情况开始说明，并逐步引入更复杂的情况。
+]
+
+#thm-method[
+  #show math.phi: math.phi.alt
+  如果特征方程的根都是实根，并且都不是重根，\
+  设这些特征值为 $lambda_1, lambda_2, dots.c, lambda_n$，则原方程 @eq-常系数高阶齐次线性微分方程 的基本解组为
+  $
+    phi_1 (x) = e^(lambda_1 x),
+    wide
+    phi_2 (x) = e^(lambda_2 x),
+    wide dots.c wide
+    phi_n (x) = e^(lambda_n x)
+  $
+
+  @eq-常系数高阶齐次线性微分方程 的通解为
+  $
+    y = C_1 phi_1 + C_2 phi_2 + dots.c + C_n phi_n
+  $
+]
+
+#thm-example[
+  求解方程
+  $
+    (dif^2 y) / (dif x^2) - 2 difyx - 3y = 0
+  $
+]
+#thm-solve[
+  特征方程是
+  $
+    lambda^2 - 2lambda - 3 = 0
+  $
+
+  它有两个特征根 $lambda_1 = -1$，$lambda_2 = 3$. 所以，通解是
+  $
+    y = C_1 e^(-x) + C_2 e^(3x)
+  $
+]
+
+#thm-method[
+  如果特征方程的某个根 $lambda_0$ 是 $k$ 重根，那么
+
+  $ 
+    e^(lambda_0 x), 
+    wide
+    x dot e^(lambda_0 x),
+    wide dots.c wide
+    x^(k-1) dot e^(lambda_0 x)
+  $
+  
+  是原方程基解（的一部分）
+]
+#thm-explain[
+  例如，如果某个特征方程的根由 $lambda_1 = 5$（三重根）和 $lambda_2 = 3$（单根），那么原方程的基本解组为
+  $
+    e^(5x), quad x e^(5x), quad x^2 e^(5x), quad e^(3x)
+  $
+
+  从而，通解是
+  $
+    y = C_1 e^(5x) + C_2 x e^(5x) + C_3 x^2 e^(5x) + C_4 e^(3x)
+  $
+]
+
+#thm-example[
+  求解方程
+  $
+    (dif^2 y) / (dif x^2) + 2 difyx + y = 0
+  $
+]
+#thm-solve[
+  特征方程是
+  $
+    lambda^2 + 2lambda + 1 = 0
+  $
+
+  它有一个二重特征根 $lambda_1 = -1$. 所以，通解是
+  $
+    y = C_1 e^(-x) + C_2 x e^(-x)
+  $
+]
+
+#let ui = $upright(i)$
+
+#thm-method[
+  如果特征方程的某个根是复值 $alpha + ui beta$，那么必然还有一个根 $alpha - ui beta$，并且
+  $
+    e^(alpha x) cos beta x, wide e^(alpha x) sin beta x
+  $
+
+  是原方程基解（的一部分）
+]
+#thm-explain[
+  因为 $e^((alpha + ui beta)x) = e^(alpha x) (cos beta x + ui sin beta x)$，所以根据实部虚部可以分别作为解，可得结论
+]
+
+#thm-example[
+  求解方程
+  $
+    y'' + y = 0
+  $
+]
+#thm-solve[
+  特征方程为
+  $
+    lambda^2 + 1 = 0
+  $
+
+  解得特征根 $lambda_1 = ui$，$lambda_2 = -ui$，故 $cos x$ 和 $sin x$ 构成原方程的基本解组，于是通解为
+  $
+    y = C_1 cos x + C_2 sin x
+  $
+]
 
 == 非齐次线性方程——常数变易法
 
